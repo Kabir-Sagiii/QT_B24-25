@@ -1,0 +1,26 @@
+
+qtrelations2425db> db.basicdetails.updateOne({name:"s1"},{$set:{ordersId:[1001,1002]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtrelations2425db> db.basicdetails.updateOne({name:"s2"},{$set:{ordersId:[1003,1005]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtrelations2425db> db.basicdetails.updateOne({name:"s3"},{$set:{ordersId:[1004,1006]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtrelations2425db>

@@ -1,0 +1,128 @@
+
+qtrelations2425db> db.basicdetails.aggregate([{from:"address",localField:"addressId",foreignField:"_id",as:"address"},{from:"orders",localField:"ordersId",foreignField:"_id",as:"orders"}])
+MongoServerError[Location40323]: A pipeline stage specification object must contain exactly one field.
+qtrelations2425db> db.basicdetails.aggregate([{$lookup:{from:"address",localField:"addressId",foreignField:"_id",as:"address"}},{$loo$lookup:{from:"orders",localField:"ordersId",foreignField:"_id",as:"orders"}}])
+[
+  {
+    _id: ObjectId('683abfd036e7d2104586b01d'),
+    name: 's1',
+    gender: 'male',
+    email: 's1@gmail.com',
+    addressId: 1,
+    ordersId: [ 1001, 1002 ],
+    address: [],
+    orders: [
+      { _id: 1001, products: [ 'p1', 'p2', 'p3' ], totalAmount: 4000 },
+      {
+        _id: 1002,
+        products: [ 'p5', 'p6', 'p1', 'p3' ],
+        totalAmount: 9000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('683abfd936e7d2104586b01e'),
+    name: 's2',
+    gender: 'male',
+
+qtrelations2425db> db.basicdetails.aggregate([{$lookup:{from:"addressdetails",localField:"addressId",foreignField:"_id",as:"address"}},{$lookup:{from:"orders",localField:"ordersId",foreignField:"_id",as:"orders"}}])
+[
+  {
+    _id: ObjectId('683abfd036e7d2104586b01d'),
+    name: 's1',
+    gender: 'male',
+    email: 's1@gmail.com',
+    addressId: 1,
+    ordersId: [ 1001, 1002 ],
+    address: [ { _id: 1, city: 'pune', state: 'MH' } ],
+    orders: [
+      { _id: 1001, products: [ 'p1', 'p2', 'p3' ], totalAmount: 4000 },
+      {
+        _id: 1002,
+        products: [ 'p5', 'p6', 'p1', 'p3' ],
+        totalAmount: 9000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('683abfd936e7d2104586b01e'),
+    name: 's2',
+    gender: 'male',
+    email: 's2@gmail.com',
+    addressId: 2,
+    ordersId: [ 1003, 1005 ],
+    address: [ { _id: 2, city: 'indore', state: 'MP' } ],
+    orders: [
+      { _id: 1003, products: [ 'p5', 'p6' ], totalAmount: 2000 },
+      {
+        _id: 1005,
+        products: [ 'p5', 'p6', 'p7', 'p8' ],
+        totalAmount: 10000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('683abfe336e7d2104586b01f'),
+    name: 's3',
+    gender: 'male',
+    email: 's3@gmail.com',
+    addressId: 3,
+    ordersId: [ 1004, 1006 ],
+    address: [ { _id: 3, city: 'hyd', state: 'TS' } ],
+    orders: [
+      {
+        _id: 1006,
+        products: [ 'p5', 'p6', 'p7', 'p8' ],
+        totalAmount: 10000
+      },
+      { _id: 1004, products: [ 'p5', 'p6' ], totalAmount: 2000 }
+
+qtrelations2425db> db.basicdetails.aggregate([{$lookup:{from:"addressdetails",localField:"addressId",foreignField:"_id",as:"address"}},{$lookup:{from:"orders",localField:"ordersId",foreignField:"_id",as:"orders"}},{$project:{ordersId:0,addressId:0}}])
+[
+  {
+    _id: ObjectId('683abfd036e7d2104586b01d'),
+    name: 's1',
+    gender: 'male',
+    email: 's1@gmail.com',
+    address: [ { _id: 1, city: 'pune', state: 'MH' } ],
+    orders: [
+      {
+        _id: 1002,
+        products: [ 'p5', 'p6', 'p1', 'p3' ],
+        totalAmount: 9000
+      },
+      { _id: 1001, products: [ 'p1', 'p2', 'p3' ], totalAmount: 4000 }
+    ]
+  },
+  {
+    _id: ObjectId('683abfd936e7d2104586b01e'),
+    name: 's2',
+    gender: 'male',
+    email: 's2@gmail.com',
+    address: [ { _id: 2, city: 'indore', state: 'MP' } ],
+    orders: [
+      { _id: 1003, products: [ 'p5', 'p6' ], totalAmount: 2000 },
+      {
+        _id: 1005,
+        products: [ 'p5', 'p6', 'p7', 'p8' ],
+        totalAmount: 10000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('683abfe336e7d2104586b01f'),
+    name: 's3',
+    gender: 'male',
+    email: 's3@gmail.com',
+    address: [ { _id: 3, city: 'hyd', state: 'TS' } ],
+    orders: [
+      {
+        _id: 1006,
+        products: [ 'p5', 'p6', 'p7', 'p8' ],
+        totalAmount: 10000
+      },
+      { _id: 1004, products: [ 'p5', 'p6' ], totalAmount: 2000 }
+    ]
+  }
+]
+qtrelations2425db>

@@ -1,0 +1,39 @@
+
+test> show dbs
+Productsdb            160.00 KiB
+admin                  40.00 KiB
+aitdbaggregation      116.00 KiB
+aitindexes            204.00 KiB
+aitmongodbworkshopdb   80.00 KiB
+aitnodedb              72.00 KiB
+aitoperators           64.00 KiB
+aitops                 96.00 KiB
+aitrelationdb         368.00 KiB
+cartdb                 40.00 KiB
+chatdudedb            224.00 KiB
+config                 72.00 KiB
+db1819                136.00 KiB
+
+
+qtrelations2425db> db.orders.find()
+[
+  { _id: 1001, products: [ 'p1', 'p2', 'p3' ], totalAmount: 4000 },
+  {
+    _id: 1002,
+    products: [ 'p5', 'p6', 'p1', 'p3' ],
+    totalAmount: 9000
+  },
+  { _id: 1003, products: [ 'p5', 'p6' ], totalAmount: 2000 },
+  { _id: 1004, products: [ 'p5', 'p6' ], totalAmount: 2000 },
+  {
+    _id: 1005,
+    products: [ 'p5', 'p6', 'p7', 'p8' ],
+    totalAmount: 10000
+  },
+  {
+    _id: 1006,
+    products: [ 'p5', 'p6', 'p7', 'p8' ],
+    totalAmount: 10000
+  }
+]
+qtrelations2425db>

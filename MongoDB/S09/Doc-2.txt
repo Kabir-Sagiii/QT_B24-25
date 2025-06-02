@@ -1,0 +1,50 @@
+
+test> use qtrelations2425db
+switched to db qtrelations2425db
+qtrelations2425db> db.basicdetails.find()
+[
+  {
+    _id: ObjectId('683abfd036e7d2104586b01d'),
+    name: 's1',
+    gender: 'male',
+    email: 's1@gmail.com',
+    addressId: 1
+  },
+  {
+    _id: ObjectId('683abfd936e7d2104586b01e'),
+    name: 's2',
+    gender: 'male',
+    email: 's2@gmail.com',
+    addressId: 2
+  },
+  {
+    _id: ObjectId('683abfe336e7d2104586b01f'),
+
+qtrelations2425db> db.basicdetails.find()
+[
+  {
+    _id: ObjectId('683abfd036e7d2104586b01d'),
+    name: 's1',
+    gender: 'male',
+    email: 's1@gmail.com',
+    addressId: 1,
+    ordersId: [ 1001, 1002 ]
+  },
+  {
+    _id: ObjectId('683abfd936e7d2104586b01e'),
+    name: 's2',
+    gender: 'male',
+    email: 's2@gmail.com',
+    addressId: 2,
+    ordersId: [ 1003, 1005 ]
+  },
+  {
+    _id: ObjectId('683abfe336e7d2104586b01f'),
+    name: 's3',
+    gender: 'male',
+    email: 's3@gmail.com',
+    addressId: 3,
+    ordersId: [ 1004, 1006 ]
+  }
+]
+qtrelations2425db>
