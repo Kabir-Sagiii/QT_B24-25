@@ -1,0 +1,12 @@
+
+qtmanytomanydb> show collections
+courses
+students
+qtmanytomanydb>
+
+
+
+
+
+
+

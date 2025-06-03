@@ -1,0 +1,239 @@
+
+qtmanytomanydb> show collections
+courses
+students
+qtmanytomanydb> db.students.insertMany([
+...   {
+...     "_id": 1,
+...     "name": "Aarav Sharma",
+...     "email": "aarav.sharma@example.com",
+...     "phone": "+91-9876543210",
+...     "gender": "Male"
+...   },
+...   {
+...     "_id": 2,
+...     "name": "Ananya Patel",
+...     "email": "ananya.patel@example.com",
+...     "phone": "+91-9123456789",
+...     "gender": "Female"
+...   },
+...   {
+...     "_id": 3,
+...     "name": "Rohan Mehta",
+...     "email": "rohan.mehta@example.com",
+...     "phone": "+91-9988776655",
+...     "gender": "Male"
+...   }
+... ]
+... )
+{ acknowledged: true, insertedIds: { '0': 1, '1': 2, '2': 3 } }
+qtmanytomanydb> db.students.find()
+[
+  {
+    _id: 1,
+    name: 'Aarav Sharma',
+    email: 'aarav.sharma@example.com',
+    phone: '+91-9876543210',
+    gender: 'Male'
+  },
+  {
+    _id: 2,
+    name: 'Ananya Patel',
+    email: 'ananya.patel@example.com',
+    phone: '+91-9123456789',
+    gender: 'Female'
+  },
+  {
+    _id: 3,
+    name: 'Rohan Mehta',
+    email: 'rohan.mehta@example.com',
+    phone: '+91-9988776655',
+    gender: 'Male'
+  }
+]
+qtmanytomanydb>
+
+qtmanytomanydb>
+
+qtmanytomanydb>
+
+qtmanytomanydb>
+
+qtmanytomanydb>
+
+qtmanytomanydb> db.courses.insertMany([
+...   {
+...     "_id": 101,
+...     "course-name": "Full Stack Web Development with MERN",
+...     "price": 45000,
+...     "duration": "6 months"
+...   },
+...   {
+...     "_id": 102,
+...     "course-name": "Full Stack Java Developer Program",
+...     "price": 50000,
+...     "duration": "5 months"
+...   },
+...   {
+...     "_id": 103,
+...     "course-name": "Python Full Stack Development",
+...     "price": 42000,
+...     "duration": "4.5 months"
+...   },
+...   {
+...     "_id": 104,
+...     "course-name": "Full Stack Development with .NET",
+...     "price": 48000,
+...     "duration": "6 months"
+...   },
+...   {
+...     "_id": 105,
+...     "course-name": "MEAN Stack Full Stack Bootcamp",
+...     "price": 46000,
+...     "duration": "5.5 months"
+...   }
+... ]
+... )
+{
+  acknowledged: true,
+  insertedIds: { '0': 101, '1': 102, '2': 103, '3': 104, '4': 105 }
+}
+qtmanytomanydb> db.courses.find()
+[
+
+qtmanytomanydb> db.students.updateOne({_id:1},{$set:{coursesId:[101,104]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.students.updateOne({_id:2},{$set:{coursesId:[102,105]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.students.updateOne({_id:3},{$set:{coursesId:[103,105]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.courses.find()
+[
+  {
+    _id: 101,
+    'course-name': 'Full Stack Web Development with MERN',
+    price: 45000,
+    duration: '6 months'
+  },
+  {
+    _id: 102,
+    'course-name': 'Full Stack Java Developer Program',
+    price: 50000,
+    duration: '5 months'
+  },
+  {
+    _id: 103,
+    'course-name': 'Python Full Stack Development',
+    price: 42000,
+    duration: '4.5 months'
+  },
+  {
+    _id: 104,
+    'course-name': 'Full Stack Development with .NET',
+    price: 48000,
+    duration: '6 months'
+  },
+  {
+    _id: 105,
+    'course-name': 'MEAN Stack Full Stack Bootcamp',
+    price: 46000,
+    duration: '5.5 months'
+  }
+]
+qtmanytomanydb> db.students.find()
+[
+  {
+    _id: 1,
+    name: 'Aarav Sharma',
+    email: 'aarav.sharma@example.com',
+    phone: '+91-9876543210',
+    gender: 'Male',
+    coursesId: [ 101, 104 ]
+  },
+  {
+    _id: 2,
+    name: 'Ananya Patel',
+    email: 'ananya.patel@example.com',
+    phone: '+91-9123456789',
+    gender: 'Female',
+    coursesId: [ 102, 105 ]
+  },
+  {
+    _id: 3,
+    name: 'Rohan Mehta',
+    email: 'rohan.mehta@example.com',
+    phone: '+91-9988776655',
+    gender: 'Male',
+    coursesId: [ 103, 105 ]
+  }
+]
+qtmanytomanydb> db.students.updateOne({_id:1},{$set:{coursesId:[101,104,103]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.students.updateOne({_id:2},{$set:{coursesId:[102,105,104]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.students.updateOne({_id:3},{$set:{coursesId:[103,105,101]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+qtmanytomanydb> db.students.find()
+[
+  {
+    _id: 1,
+    name: 'Aarav Sharma',
+    email: 'aarav.sharma@example.com',
+    phone: '+91-9876543210',
+    gender: 'Male',
+    coursesId: [ 101, 104, 103 ]
+  },
+  {
+    _id: 2,
+    name: 'Ananya Patel',
+    email: 'ananya.patel@example.com',
+    phone: '+91-9123456789',
+    gender: 'Female',
+    coursesId: [ 102, 105, 104 ]
+  },
+  {
+    _id: 3,
+    name: 'Rohan Mehta',
+    email: 'rohan.mehta@example.com',
+    phone: '+91-9988776655',
+    gender: 'Male',
+    coursesId: [ 103, 105, 101 ]
+  }
+]
+qtmanytomanydb>
