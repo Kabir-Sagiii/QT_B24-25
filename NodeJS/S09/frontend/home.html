@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modern Animated Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function logout() {
+        location.href = "login.html";
+      }
+    </script>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+    "
+  >
+    <div style="text-align: center; animation: fadeIn 2s ease-out">
+      <h1
+        style="
+          font-size: 3em;
+          margin-bottom: 0.5em;
+          animation: slideDown 1s ease-out;
+        "
+      >
+        Welcome to My Website
+      </h1>
+
+      <p
+        style="
+          font-size: 1.2em;
+          margin-bottom: 1.5em;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.5;
+          animation: fadeIn 2s ease-out 0.5s forwards;
+          opacity: 0;
+        "
+      >
+        Experience clean design, seamless transitions, and a modern user
+        interface. Let's build something amazing together.
+      </p>
+
+      <a
+        href="#explore"
+        style="
+          display: inline-block;
+          padding: 12px 30px;
+          font-size: 1em;
+          color: #fff;
+          background-color: #00b894;
+          border: none;
+          border-radius: 25px;
+          text-decoration: none;
+          transition: background 0.3s ease, transform 0.3s ease;
+          animation: fadeIn 2s ease-out 1s forwards;
+          opacity: 0;
+        "
+        onmouseover="this.style.backgroundColor='#019875'; this.style.transform='scale(1.05)';"
+        onmouseout="this.style.backgroundColor='#00b894'; this.style.transform='scale(1)';"
+      >
+        Explore Now </a
+      ><br /><br /><br />
+
+      <button
+        onclick="logout()"
+        style="
+          color: white;
+          border: 2px solid red;
+          background: red;
+          padding: 5px 20px;
+          font-weight: bold;
+          font-size: 17px;
+          border-radius: 10px;
+        "
+      >
+        Logout
+      </button>
+    </div>
+
+    <!-- Keyframe Animations -->
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </body>
+</html>
